@@ -58,7 +58,7 @@ function createPokemons(pokemon) {
   pokeBox.style.backgroundColor = `${backgrounColors[typeName]}`;
   pokeBox.innerHTML = `
   <img class="avatar" width="300px" height="300px" src="${
-    pokemon.sprites.other.home.front_default
+    pokemon.sprites.other.dream_world.front_default
   }" alt="" />
   <div  class="info-box">
     <p class="id">${pokemonID}</p>
