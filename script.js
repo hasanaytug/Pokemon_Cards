@@ -1,6 +1,6 @@
 const pokemonNames = document.querySelectorAll(".name");
 
-//Normal, Fire, Water, Grass, Flying, Fighting, Poison, Electric, Ground, Rock, Psychic, Ice, Bug, Ghost, Steel, Dragon, Dark and Fairy
+//Background color values for dynamic backgroung color assignment
 const backgrounColors = {
   normal: "#B6AD90",
   fire: "#E85D04",
@@ -22,6 +22,8 @@ const backgrounColors = {
   fairy: "#ef476f",
 };
 
+//Getting 20 pokemon names from the API
+
 const getPokemons = async (num) => {
   const response = await fetch(
     `https://pokeapi.co/api/v2/pokemon?offset=${num}&limit=20`
@@ -30,6 +32,8 @@ const getPokemons = async (num) => {
 
   getInfo(data.results);
 };
+
+//Getting individual pokemon details from another endpoint with pokemon name data
 
 const getInfo = (pokemon) => {
   pokemon.forEach(async (item) => {
@@ -40,6 +44,8 @@ const getInfo = (pokemon) => {
     createPokemons(data);
   });
 };
+
+//Crearing pokemon cards with the details come from the API
 
 function createPokemons(pokemon) {
   let pokemonID = "";
@@ -88,6 +94,8 @@ function createPokemons(pokemon) {
   document.querySelector(".poke-card").appendChild(pokeBox);
 }
 
+//Filtering pokemons by name or type
+
 document.querySelector("#search").addEventListener("input", (e) => {
   const searchValue = e.target.value;
   const infoBox = document.querySelectorAll(".info-box");
@@ -107,6 +115,9 @@ document.querySelector("#search").addEventListener("input", (e) => {
     }
   });
 });
+
+// Load more button logic
+
 let counter = 20;
 document.querySelector(".load-btn").addEventListener("click", (e) => {
   e.preventDefault();
